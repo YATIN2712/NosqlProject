@@ -1,0 +1,23 @@
+To run the entire module1 run command "make run"
+
+Module 1 :
+        has the code extract_countries which
+        ->extracts the continents /country/world list from "worldometers_countrylist.txt"
+        ->parses the link and creates a webpage.html
+        -> extracts the headings from the table
+        -> calls extract_data.py
+
+        extract_data.py
+        ->extracts the entire table and refines it for our use and stores the files in the folder "Data"
+        ->COnvention "Data/countryname.txt"
+        ->written a program to answer the queries of module1
+        -> enter the country/continent or "World" for world
+            ->Enter number of which query you want:
+                1.Active Cases
+                2.New Death
+                3.New Recovered
+                4.New Cases
+            ->enter 1 to continue and 0 to exit out of the loop
+
+
+

@@ -1,0 +1,10 @@
+TotalCases,69859756
+NewCases, 
+TotalDeaths,1365807
+NewDeaths, 
+TotalRecovered,66650237
+NewRecovered, 
+ActiveCases,1843712
+Deaths/1M pop, 
+TotalTests, 
+Tests/1M pop, 

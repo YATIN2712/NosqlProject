@@ -1,0 +1,628 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    CLOSEDIV
+    CLOSESUP
+    CLOSETABLE
+    OPENDIV
+    OPENSUP
+    OPENTABLE
+
+Grammar
+
+Rule 0     S' -> start
+Rule 1     start -> BEGINTABLE skipall OPENBODY body
+Rule 2     body -> handlerow
+Rule 3     handlerow -> skip OPENROW handlecontent CLOSEROW handlerow
+Rule 4     handlerow -> skip
+Rule 5     handlecontent -> skip OPENDATA handledata CLOSEDATA handlecontent
+Rule 6     handlecontent -> skip
+Rule 7     skipall -> CONTENT skipall
+Rule 8     skipall -> GARBAGE skipall
+Rule 9     skipall -> OPENROW skipall
+Rule 10    skipall -> CLOSEROW skipall
+Rule 11    skipall -> OPENHEADER skipall
+Rule 12    skipall -> CLOSEHEADER skipall
+Rule 13    skipall -> <empty>
+Rule 14    handledata -> CONTENT
+Rule 15    handledata -> CONTENT GARBAGE CONTENT GARBAGE CONTENT
+Rule 16    handledata -> CONTENT GARBAGE GARBAGE CONTENT
+Rule 17    handledata -> OPENHREF CONTENT CLOSEHREF
+Rule 18    handledata -> OPENSPAN CONTENT CLOSESPAN
+Rule 19    handledata -> OPENHREF CONTENT CLOSEHREF CONTENT
+Rule 20    handledata -> OPENHREF CONTENT CONTENT CONTENT CLOSEHREF
+Rule 21    handledata -> CONTENT CONTENT
+Rule 22    handledata -> <empty>
+Rule 23    skip -> CONTENT skip
+Rule 24    skip -> GARBAGE skip
+Rule 25    skip -> <empty>
+
+Terminals, with rules where they appear
+
+BEGINTABLE           : 1
+CLOSEDATA            : 5
+CLOSEDIV             : 
+CLOSEHEADER          : 12
+CLOSEHREF            : 17 19 20
+CLOSEROW             : 3 10
+CLOSESPAN            : 18
+CLOSESUP             : 
+CLOSETABLE           : 
+CONTENT              : 7 14 15 15 15 16 16 17 18 19 19 20 20 20 21 21 23
+GARBAGE              : 8 15 15 16 16 24
+OPENBODY             : 1
+OPENDATA             : 5
+OPENDIV              : 
+OPENHEADER           : 11
+OPENHREF             : 17 19 20
+OPENROW              : 3 9
+OPENSPAN             : 18
+OPENSUP              : 
+OPENTABLE            : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+body                 : 1
+handlecontent        : 3 5
+handledata           : 5
+handlerow            : 2 3
+skip                 : 3 4 5 6 23 24
+skipall              : 1 7 8 9 10 11 12
+start                : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . start
+    (1) start -> . BEGINTABLE skipall OPENBODY body
+
+    BEGINTABLE      shift and go to state 2
+
+    start                          shift and go to state 1
+
+state 1
+
+    (0) S' -> start .
+
+
+
+state 2
+
+    (1) start -> BEGINTABLE . skipall OPENBODY body
+    (7) skipall -> . CONTENT skipall
+    (8) skipall -> . GARBAGE skipall
+    (9) skipall -> . OPENROW skipall
+    (10) skipall -> . CLOSEROW skipall
+    (11) skipall -> . OPENHEADER skipall
+    (12) skipall -> . CLOSEHEADER skipall
+    (13) skipall -> .
+
+    CONTENT         shift and go to state 4
+    GARBAGE         shift and go to state 5
+    OPENROW         shift and go to state 6
+    CLOSEROW        shift and go to state 7
+    OPENHEADER      shift and go to state 8
+    CLOSEHEADER     shift and go to state 9
+    OPENBODY        reduce using rule 13 (skipall -> .)
+
+    skipall                        shift and go to state 3
+
+state 3
+
+    (1) start -> BEGINTABLE skipall . OPENBODY body
+
+    OPENBODY        shift and go to state 10
+
+
+state 4
+
+    (7) skipall -> CONTENT . skipall
+    (7) skipall -> . CONTENT skipall
+    (8) skipall -> . GARBAGE skipall
+    (9) skipall -> . OPENROW skipall
+    (10) skipall -> . CLOSEROW skipall
+    (11) skipall -> . OPENHEADER skipall
+    (12) skipall -> . CLOSEHEADER skipall
+    (13) skipall -> .
+
+    CONTENT         shift and go to state 4
+    GARBAGE         shift and go to state 5
+    OPENROW         shift and go to state 6
+    CLOSEROW        shift and go to state 7
+    OPENHEADER      shift and go to state 8
+    CLOSEHEADER     shift and go to state 9
+    OPENBODY        reduce using rule 13 (skipall -> .)
+
+    skipall                        shift and go to state 11
+
+state 5
+
+    (8) skipall -> GARBAGE . skipall
+    (7) skipall -> . CONTENT skipall
+    (8) skipall -> . GARBAGE skipall
+    (9) skipall -> . OPENROW skipall
+    (10) skipall -> . CLOSEROW skipall
+    (11) skipall -> . OPENHEADER skipall
+    (12) skipall -> . CLOSEHEADER skipall
+    (13) skipall -> .
+
+    CONTENT         shift and go to state 4
+    GARBAGE         shift and go to state 5
+    OPENROW         shift and go to state 6
+    CLOSEROW        shift and go to state 7
+    OPENHEADER      shift and go to state 8
+    CLOSEHEADER     shift and go to state 9
+    OPENBODY        reduce using rule 13 (skipall -> .)
+
+    skipall                        shift and go to state 12
+
+state 6
+
+    (9) skipall -> OPENROW . skipall
+    (7) skipall -> . CONTENT skipall
+    (8) skipall -> . GARBAGE skipall
+    (9) skipall -> . OPENROW skipall
+    (10) skipall -> . CLOSEROW skipall
+    (11) skipall -> . OPENHEADER skipall
+    (12) skipall -> . CLOSEHEADER skipall
+    (13) skipall -> .
+
+    CONTENT         shift and go to state 4
+    GARBAGE         shift and go to state 5
+    OPENROW         shift and go to state 6
+    CLOSEROW        shift and go to state 7
+    OPENHEADER      shift and go to state 8
+    CLOSEHEADER     shift and go to state 9
+    OPENBODY        reduce using rule 13 (skipall -> .)
+
+    skipall                        shift and go to state 13
+
+state 7
+
+    (10) skipall -> CLOSEROW . skipall
+    (7) skipall -> . CONTENT skipall
+    (8) skipall -> . GARBAGE skipall
+    (9) skipall -> . OPENROW skipall
+    (10) skipall -> . CLOSEROW skipall
+    (11) skipall -> . OPENHEADER skipall
+    (12) skipall -> . CLOSEHEADER skipall
+    (13) skipall -> .
+
+    CONTENT         shift and go to state 4
+    GARBAGE         shift and go to state 5
+    OPENROW         shift and go to state 6
+    CLOSEROW        shift and go to state 7
+    OPENHEADER      shift and go to state 8
+    CLOSEHEADER     shift and go to state 9
+    OPENBODY        reduce using rule 13 (skipall -> .)
+
+    skipall                        shift and go to state 14
+
+state 8
+
+    (11) skipall -> OPENHEADER . skipall
+    (7) skipall -> . CONTENT skipall
+    (8) skipall -> . GARBAGE skipall
+    (9) skipall -> . OPENROW skipall
+    (10) skipall -> . CLOSEROW skipall
+    (11) skipall -> . OPENHEADER skipall
+    (12) skipall -> . CLOSEHEADER skipall
+    (13) skipall -> .
+
+    CONTENT         shift and go to state 4
+    GARBAGE         shift and go to state 5
+    OPENROW         shift and go to state 6
+    CLOSEROW        shift and go to state 7
+    OPENHEADER      shift and go to state 8
+    CLOSEHEADER     shift and go to state 9
+    OPENBODY        reduce using rule 13 (skipall -> .)
+
+    skipall                        shift and go to state 15
+
+state 9
+
+    (12) skipall -> CLOSEHEADER . skipall
+    (7) skipall -> . CONTENT skipall
+    (8) skipall -> . GARBAGE skipall
+    (9) skipall -> . OPENROW skipall
+    (10) skipall -> . CLOSEROW skipall
+    (11) skipall -> . OPENHEADER skipall
+    (12) skipall -> . CLOSEHEADER skipall
+    (13) skipall -> .
+
+    CONTENT         shift and go to state 4
+    GARBAGE         shift and go to state 5
+    OPENROW         shift and go to state 6
+    CLOSEROW        shift and go to state 7
+    OPENHEADER      shift and go to state 8
+    CLOSEHEADER     shift and go to state 9
+    OPENBODY        reduce using rule 13 (skipall -> .)
+
+    skipall                        shift and go to state 16
+
+state 10
+
+    (1) start -> BEGINTABLE skipall OPENBODY . body
+    (2) body -> . handlerow
+    (3) handlerow -> . skip OPENROW handlecontent CLOSEROW handlerow
+    (4) handlerow -> . skip
+    (23) skip -> . CONTENT skip
+    (24) skip -> . GARBAGE skip
+    (25) skip -> .
+
+    CONTENT         shift and go to state 20
+    GARBAGE         shift and go to state 21
+    OPENROW         reduce using rule 25 (skip -> .)
+    $end            reduce using rule 25 (skip -> .)
+
+    body                           shift and go to state 17
+    handlerow                      shift and go to state 18
+    skip                           shift and go to state 19
+
+state 11
+
+    (7) skipall -> CONTENT skipall .
+
+    OPENBODY        reduce using rule 7 (skipall -> CONTENT skipall .)
+
+
+state 12
+
+    (8) skipall -> GARBAGE skipall .
+
+    OPENBODY        reduce using rule 8 (skipall -> GARBAGE skipall .)
+
+
+state 13
+
+    (9) skipall -> OPENROW skipall .
+
+    OPENBODY        reduce using rule 9 (skipall -> OPENROW skipall .)
+
+
+state 14
+
+    (10) skipall -> CLOSEROW skipall .
+
+    OPENBODY        reduce using rule 10 (skipall -> CLOSEROW skipall .)
+
+
+state 15
+
+    (11) skipall -> OPENHEADER skipall .
+
+    OPENBODY        reduce using rule 11 (skipall -> OPENHEADER skipall .)
+
+
+state 16
+
+    (12) skipall -> CLOSEHEADER skipall .
+
+    OPENBODY        reduce using rule 12 (skipall -> CLOSEHEADER skipall .)
+
+
+state 17
+
+    (1) start -> BEGINTABLE skipall OPENBODY body .
+
+    $end            reduce using rule 1 (start -> BEGINTABLE skipall OPENBODY body .)
+
+
+state 18
+
+    (2) body -> handlerow .
+
+    $end            reduce using rule 2 (body -> handlerow .)
+
+
+state 19
+
+    (3) handlerow -> skip . OPENROW handlecontent CLOSEROW handlerow
+    (4) handlerow -> skip .
+
+    OPENROW         shift and go to state 22
+    $end            reduce using rule 4 (handlerow -> skip .)
+
+
+state 20
+
+    (23) skip -> CONTENT . skip
+    (23) skip -> . CONTENT skip
+    (24) skip -> . GARBAGE skip
+    (25) skip -> .
+
+    CONTENT         shift and go to state 20
+    GARBAGE         shift and go to state 21
+    OPENROW         reduce using rule 25 (skip -> .)
+    $end            reduce using rule 25 (skip -> .)
+    OPENDATA        reduce using rule 25 (skip -> .)
+    CLOSEROW        reduce using rule 25 (skip -> .)
+
+    skip                           shift and go to state 23
+
+state 21
+
+    (24) skip -> GARBAGE . skip
+    (23) skip -> . CONTENT skip
+    (24) skip -> . GARBAGE skip
+    (25) skip -> .
+
+    CONTENT         shift and go to state 20
+    GARBAGE         shift and go to state 21
+    OPENROW         reduce using rule 25 (skip -> .)
+    $end            reduce using rule 25 (skip -> .)
+    OPENDATA        reduce using rule 25 (skip -> .)
+    CLOSEROW        reduce using rule 25 (skip -> .)
+
+    skip                           shift and go to state 24
+
+state 22
+
+    (3) handlerow -> skip OPENROW . handlecontent CLOSEROW handlerow
+    (5) handlecontent -> . skip OPENDATA handledata CLOSEDATA handlecontent
+    (6) handlecontent -> . skip
+    (23) skip -> . CONTENT skip
+    (24) skip -> . GARBAGE skip
+    (25) skip -> .
+
+    CONTENT         shift and go to state 20
+    GARBAGE         shift and go to state 21
+    OPENDATA        reduce using rule 25 (skip -> .)
+    CLOSEROW        reduce using rule 25 (skip -> .)
+
+    skip                           shift and go to state 25
+    handlecontent                  shift and go to state 26
+
+state 23
+
+    (23) skip -> CONTENT skip .
+
+    OPENROW         reduce using rule 23 (skip -> CONTENT skip .)
+    $end            reduce using rule 23 (skip -> CONTENT skip .)
+    OPENDATA        reduce using rule 23 (skip -> CONTENT skip .)
+    CLOSEROW        reduce using rule 23 (skip -> CONTENT skip .)
+
+
+state 24
+
+    (24) skip -> GARBAGE skip .
+
+    OPENROW         reduce using rule 24 (skip -> GARBAGE skip .)
+    $end            reduce using rule 24 (skip -> GARBAGE skip .)
+    OPENDATA        reduce using rule 24 (skip -> GARBAGE skip .)
+    CLOSEROW        reduce using rule 24 (skip -> GARBAGE skip .)
+
+
+state 25
+
+    (5) handlecontent -> skip . OPENDATA handledata CLOSEDATA handlecontent
+    (6) handlecontent -> skip .
+
+    OPENDATA        shift and go to state 27
+    CLOSEROW        reduce using rule 6 (handlecontent -> skip .)
+
+
+state 26
+
+    (3) handlerow -> skip OPENROW handlecontent . CLOSEROW handlerow
+
+    CLOSEROW        shift and go to state 28
+
+
+state 27
+
+    (5) handlecontent -> skip OPENDATA . handledata CLOSEDATA handlecontent
+    (14) handledata -> . CONTENT
+    (15) handledata -> . CONTENT GARBAGE CONTENT GARBAGE CONTENT
+    (16) handledata -> . CONTENT GARBAGE GARBAGE CONTENT
+    (17) handledata -> . OPENHREF CONTENT CLOSEHREF
+    (18) handledata -> . OPENSPAN CONTENT CLOSESPAN
+    (19) handledata -> . OPENHREF CONTENT CLOSEHREF CONTENT
+    (20) handledata -> . OPENHREF CONTENT CONTENT CONTENT CLOSEHREF
+    (21) handledata -> . CONTENT CONTENT
+    (22) handledata -> .
+
+    CONTENT         shift and go to state 30
+    OPENHREF        shift and go to state 31
+    OPENSPAN        shift and go to state 32
+    CLOSEDATA       reduce using rule 22 (handledata -> .)
+
+    handledata                     shift and go to state 29
+
+state 28
+
+    (3) handlerow -> skip OPENROW handlecontent CLOSEROW . handlerow
+    (3) handlerow -> . skip OPENROW handlecontent CLOSEROW handlerow
+    (4) handlerow -> . skip
+    (23) skip -> . CONTENT skip
+    (24) skip -> . GARBAGE skip
+    (25) skip -> .
+
+    CONTENT         shift and go to state 20
+    GARBAGE         shift and go to state 21
+    OPENROW         reduce using rule 25 (skip -> .)
+    $end            reduce using rule 25 (skip -> .)
+
+    skip                           shift and go to state 19
+    handlerow                      shift and go to state 33
+
+state 29
+
+    (5) handlecontent -> skip OPENDATA handledata . CLOSEDATA handlecontent
+
+    CLOSEDATA       shift and go to state 34
+
+
+state 30
+
+    (14) handledata -> CONTENT .
+    (15) handledata -> CONTENT . GARBAGE CONTENT GARBAGE CONTENT
+    (16) handledata -> CONTENT . GARBAGE GARBAGE CONTENT
+    (21) handledata -> CONTENT . CONTENT
+
+    CLOSEDATA       reduce using rule 14 (handledata -> CONTENT .)
+    GARBAGE         shift and go to state 36
+    CONTENT         shift and go to state 35
+
+
+state 31
+
+    (17) handledata -> OPENHREF . CONTENT CLOSEHREF
+    (19) handledata -> OPENHREF . CONTENT CLOSEHREF CONTENT
+    (20) handledata -> OPENHREF . CONTENT CONTENT CONTENT CLOSEHREF
+
+    CONTENT         shift and go to state 37
+
+
+state 32
+
+    (18) handledata -> OPENSPAN . CONTENT CLOSESPAN
+
+    CONTENT         shift and go to state 38
+
+
+state 33
+
+    (3) handlerow -> skip OPENROW handlecontent CLOSEROW handlerow .
+
+    $end            reduce using rule 3 (handlerow -> skip OPENROW handlecontent CLOSEROW handlerow .)
+
+
+state 34
+
+    (5) handlecontent -> skip OPENDATA handledata CLOSEDATA . handlecontent
+    (5) handlecontent -> . skip OPENDATA handledata CLOSEDATA handlecontent
+    (6) handlecontent -> . skip
+    (23) skip -> . CONTENT skip
+    (24) skip -> . GARBAGE skip
+    (25) skip -> .
+
+    CONTENT         shift and go to state 20
+    GARBAGE         shift and go to state 21
+    OPENDATA        reduce using rule 25 (skip -> .)
+    CLOSEROW        reduce using rule 25 (skip -> .)
+
+    skip                           shift and go to state 25
+    handlecontent                  shift and go to state 39
+
+state 35
+
+    (21) handledata -> CONTENT CONTENT .
+
+    CLOSEDATA       reduce using rule 21 (handledata -> CONTENT CONTENT .)
+
+
+state 36
+
+    (15) handledata -> CONTENT GARBAGE . CONTENT GARBAGE CONTENT
+    (16) handledata -> CONTENT GARBAGE . GARBAGE CONTENT
+
+    CONTENT         shift and go to state 40
+    GARBAGE         shift and go to state 41
+
+
+state 37
+
+    (17) handledata -> OPENHREF CONTENT . CLOSEHREF
+    (19) handledata -> OPENHREF CONTENT . CLOSEHREF CONTENT
+    (20) handledata -> OPENHREF CONTENT . CONTENT CONTENT CLOSEHREF
+
+    CLOSEHREF       shift and go to state 43
+    CONTENT         shift and go to state 42
+
+
+state 38
+
+    (18) handledata -> OPENSPAN CONTENT . CLOSESPAN
+
+    CLOSESPAN       shift and go to state 44
+
+
+state 39
+
+    (5) handlecontent -> skip OPENDATA handledata CLOSEDATA handlecontent .
+
+    CLOSEROW        reduce using rule 5 (handlecontent -> skip OPENDATA handledata CLOSEDATA handlecontent .)
+
+
+state 40
+
+    (15) handledata -> CONTENT GARBAGE CONTENT . GARBAGE CONTENT
+
+    GARBAGE         shift and go to state 45
+
+
+state 41
+
+    (16) handledata -> CONTENT GARBAGE GARBAGE . CONTENT
+
+    CONTENT         shift and go to state 46
+
+
+state 42
+
+    (20) handledata -> OPENHREF CONTENT CONTENT . CONTENT CLOSEHREF
+
+    CONTENT         shift and go to state 47
+
+
+state 43
+
+    (17) handledata -> OPENHREF CONTENT CLOSEHREF .
+    (19) handledata -> OPENHREF CONTENT CLOSEHREF . CONTENT
+
+    CLOSEDATA       reduce using rule 17 (handledata -> OPENHREF CONTENT CLOSEHREF .)
+    CONTENT         shift and go to state 48
+
+
+state 44
+
+    (18) handledata -> OPENSPAN CONTENT CLOSESPAN .
+
+    CLOSEDATA       reduce using rule 18 (handledata -> OPENSPAN CONTENT CLOSESPAN .)
+
+
+state 45
+
+    (15) handledata -> CONTENT GARBAGE CONTENT GARBAGE . CONTENT
+
+    CONTENT         shift and go to state 49
+
+
+state 46
+
+    (16) handledata -> CONTENT GARBAGE GARBAGE CONTENT .
+
+    CLOSEDATA       reduce using rule 16 (handledata -> CONTENT GARBAGE GARBAGE CONTENT .)
+
+
+state 47
+
+    (20) handledata -> OPENHREF CONTENT CONTENT CONTENT . CLOSEHREF
+
+    CLOSEHREF       shift and go to state 50
+
+
+state 48
+
+    (19) handledata -> OPENHREF CONTENT CLOSEHREF CONTENT .
+
+    CLOSEDATA       reduce using rule 19 (handledata -> OPENHREF CONTENT CLOSEHREF CONTENT .)
+
+
+state 49
+
+    (15) handledata -> CONTENT GARBAGE CONTENT GARBAGE CONTENT .
+
+    CLOSEDATA       reduce using rule 15 (handledata -> CONTENT GARBAGE CONTENT GARBAGE CONTENT .)
+
+
+state 50
+
+    (20) handledata -> OPENHREF CONTENT CONTENT CONTENT CLOSEHREF .
+
+    CLOSEDATA       reduce using rule 20 (handledata -> OPENHREF CONTENT CONTENT CONTENT CLOSEHREF .)
+
